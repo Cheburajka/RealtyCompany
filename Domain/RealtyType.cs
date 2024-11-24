@@ -18,7 +18,7 @@ namespace Domain
         /// <param name="name">Имя типа недвижимости.</param>
         public RealtyType(string name)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.Empty;
             this.TypeName = name.TrimOrNull() ?? throw new ArgumentNullException(nameof(name));
         }
 
