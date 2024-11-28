@@ -18,7 +18,7 @@ namespace Domain
         /// <param name="realty">Недвижимость.</param>
         public Application(Client client, Realtor realtor, Realty realty)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.Empty;
             this.Client = client ?? throw new ArgumentNullException(nameof(client));
             this.Realtor = realtor ?? throw new ArgumentNullException(nameof(realtor));
             this.Realty = realty ?? throw new ArgumentNullException(nameof(realty));

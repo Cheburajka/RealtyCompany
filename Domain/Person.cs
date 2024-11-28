@@ -1,6 +1,7 @@
 ﻿// <copyright file="Person.cs" company="Realty">
 // Copyright (c) Realty. All rights reserved.
 // </copyright>
+
 namespace Domain
 {
     using System;
@@ -9,13 +10,14 @@ namespace Domain
     /// <summary>
     /// Абстрактный класс, представляющий человека.
     /// </summary>
-    public abstract class Person : IEqualityComparer<Person>
+    public abstract class Person<TPerson> : IEquatable<TPerson>
+        where TPerson : Person<TPerson>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// Initializes a new instance of the <see cref="Person{TPerson}"/> class.
         /// </summary>
         /// <param name="name">Имя человека.</param>
-        public Person(string name)
+        protected Person(string name)
         {
             this.Id = Guid.Empty;
             this.PersonName = name ?? throw new ArgumentNullException(nameof(name));
@@ -32,37 +34,38 @@ namespace Domain
         public string PersonName { get; }
 
         /// <inheritdoc/>
-        public bool Equals(Person? firstPerson, Person? secondPerson)
+        public bool Equals(TPerson? other)
         {
-            if (firstPerson == null && secondPerson == null)
-            {
-                return true;
-            }
-
-            if (firstPerson == null || secondPerson == null)
+            if (other is null)
             {
                 return false;
             }
 
-            if (firstPerson.Id != Guid.Empty && secondPerson.Id != Guid.Empty)
+            if (ReferenceEquals(this, other))
             {
-                return firstPerson.Id == secondPerson.Id;
+                return true;
             }
 
-            return string.Equals(firstPerson.PersonName, secondPerson.PersonName, StringComparison.OrdinalIgnoreCase);
+            return this.Id == other.Id &&
+                   string.Equals(this.PersonName, other.PersonName, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <inheritdoc/>
-        public int GetHashCode([DisallowNull] Person person)
+        public override bool Equals(object? obj)
         {
-            ArgumentNullException.ThrowIfNull(person);
+            return this.Equals(obj as TPerson);
+        }
 
-            if (person.Id != Guid.Empty)
-            {
-                return person.Id.GetHashCode();
-            }
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Id, StringComparer.OrdinalIgnoreCase.GetHashCode(this.PersonName));
+        }
 
-            return StringComparer.OrdinalIgnoreCase.GetHashCode(person.PersonName);
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"{this.PersonName} (ID: {this.Id})";
         }
     }
 }

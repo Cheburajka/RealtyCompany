@@ -1,6 +1,7 @@
 ﻿// <copyright file="Realtor.cs" company="Realty">
 // Copyright (c) Realty. All rights reserved.
 // </copyright>
+
 namespace Domain
 {
     using System;
@@ -8,7 +9,7 @@ namespace Domain
     /// <summary>
     /// Класс, представляющий риэлтора.
     /// </summary>
-    public class Realtor : Person
+    public class Realtor : Person<Realtor>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Realtor"/> class.
@@ -16,6 +17,14 @@ namespace Domain
         /// <param name="name">Имя риэлтора.</param>
         public Realtor(string name)
             : base(name)
+        {
+        }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="Client"/>.
+        /// </summary>
+        [Obsolete("For ORM only", true)]
+        private Realtor()
+            : base(string.Empty)
         {
         }
     }
