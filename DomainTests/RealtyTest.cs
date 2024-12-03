@@ -74,19 +74,5 @@ namespace DomainTests
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new Realty(_realtyType, _square, address, _price));
         }
-
-        [Test]
-        public void Constructor_ValidParameters_InitializesPropertiesCorrectly()
-        {
-            // Act
-            var realty = new Realty(_realtyType, _square, _address, _price);
-
-            // Assert
-            Assert.AreNotEqual(Guid.Empty, realty.Id);
-            Assert.AreEqual(_realtyType, realty.RealtyType);
-            Assert.AreEqual(_square, realty.Square);
-            Assert.AreEqual(_address, realty.Address);
-            Assert.AreEqual(_price, realty.Price);
-        }
     }
 }

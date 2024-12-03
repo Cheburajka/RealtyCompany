@@ -26,20 +26,25 @@ namespace DataAccessLayer
         {
         }
 
+        /// <summary>
+        /// </summary>
+        public DbSet<Client> Clients { get; set; }
 
-        public DbSet<Client> Clients { get; } = default!;
+        /// <summary>
+        /// </summary>
+        public DbSet<Realtor> Realtors { get; set; }
 
+        /// <summary>
+        /// </summary>
+        public DbSet<Realty> Realties { get; set; }
 
-        public DbSet<Realtor> Realtors { get; } = default!;
+        /// <summary>
+        /// </summary>
+        public DbSet<RealtyType> RealtyTypes { get; set; }
 
-
-        public DbSet<Realty> Realties { get; } = default!;
-
-
-        public DbSet<RealtyType> RealtyTypes { get; } = default!;
-
-
-        public DbSet<Application> Applications { get; } = default!;
+        /// <summary>
+        /// </summary>
+        public DbSet<Application> Applications { get; set; }
 
 
 
@@ -53,7 +58,7 @@ namespace DataAccessLayer
         /// <inheritdoc/>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("User ID=postgres; Password=1234; Host=localhost; Port=5432; Database=RealtyCompany;");
+            optionsBuilder.UseNpgsql("User ID=postgres; Password=1234; Host=localhost; Port=5432; Database=RealtyCompany1;");
         }
 
     }

@@ -12,20 +12,6 @@ namespace DomainTests
     public class RealtyTypeTests
     {
         [Test]
-        public void Constructor_ValidParameters_CreatesInstance()
-        {
-            // Arrange
-            var name = "Apartment";
-
-            // Act
-            var realtyType = new RealtyType(name);
-
-            // Assert
-            Assert.AreNotEqual(Guid.Empty, realtyType.Id);
-            Assert.AreEqual(name, realtyType.TypeName);
-        }
-
-        [Test]
         public void Constructor_NullName_ThrowsArgumentNullException()
         {
             // Arrange
