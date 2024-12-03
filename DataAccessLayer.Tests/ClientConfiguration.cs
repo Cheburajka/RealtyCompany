@@ -20,7 +20,7 @@ namespace DataAccessLayer.Tests
         public void AddClientToDatabase_Success()
         {
             // arrange
-            var client = new Client("Иван Иванов");
+            var client = new Client("Иван Ивановп");
 
             // act
             _ = this.DataContext.Add(client);
