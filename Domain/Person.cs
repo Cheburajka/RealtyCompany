@@ -1,6 +1,7 @@
 ﻿// <copyright file="Person.cs" company="Realty">
 // Copyright (c) Realty. All rights reserved.
 // </copyright>
+
 namespace Domain
 {
     using System;
@@ -9,15 +10,16 @@ namespace Domain
     /// <summary>
     /// Абстрактный класс, представляющий человека.
     /// </summary>
-    public abstract class Person : IEqualityComparer<Person>
+    public abstract class Person<TPerson> : IEquatable<TPerson>
+        where TPerson : Person<TPerson>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// Initializes a new instance of the <see cref="Person{TPerson}"/> class.
         /// </summary>
         /// <param name="name">Имя человека.</param>
-        public Person(string name)
+        protected Person(string name)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.Empty;
             this.PersonName = name ?? throw new ArgumentNullException(nameof(name));
         }
 
@@ -32,15 +34,38 @@ namespace Domain
         public string PersonName { get; }
 
         /// <inheritdoc/>
-        public bool Equals(Person? x, Person? y)
+        public bool Equals(TPerson? other)
         {
-            throw new NotImplementedException();
+            if (other is null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.Id == other.Id &&
+                   string.Equals(this.PersonName, other.PersonName, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <inheritdoc/>
-        public int GetHashCode([DisallowNull] Person obj)
+        public override bool Equals(object? obj)
         {
-            throw new NotImplementedException();
+            return this.Equals(obj as TPerson);
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Id, StringComparer.OrdinalIgnoreCase.GetHashCode(this.PersonName));
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"{this.PersonName} (ID: {this.Id})";
         }
     }
 }

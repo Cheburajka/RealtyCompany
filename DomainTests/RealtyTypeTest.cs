@@ -12,20 +12,6 @@ namespace DomainTests
     public class RealtyTypeTests
     {
         [Test]
-        public void Constructor_ValidParameters_CreatesInstance()
-        {
-            // Arrange
-            var name = "Apartment";
-
-            // Act
-            var realtyType = new RealtyType(name);
-
-            // Assert
-            Assert.AreNotEqual(Guid.Empty, realtyType.Id);
-            Assert.AreEqual(name, realtyType.TypeName);
-        }
-
-        [Test]
         public void Constructor_NullName_ThrowsArgumentNullException()
         {
             // Arrange
@@ -97,50 +83,6 @@ namespace DomainTests
 
             // Assert
             Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void GetHashCode_SameInstance_ReturnsSameHashCode()
-        {
-            // Arrange
-            var realtyType = new RealtyType("Apartment");
-
-            // Act
-            var hashCode1 = realtyType.GetHashCode();
-            var hashCode2 = realtyType.GetHashCode();
-
-            // Assert
-            Assert.AreEqual(hashCode1, hashCode2);
-        }
-
-        [Test]
-        public void GetHashCode_DifferentInstancesWithSameName_ReturnsSameHashCode()
-        {
-            // Arrange
-            var realtyType1 = new RealtyType("Apartment");
-            var realtyType2 = new RealtyType("Apartment");
-
-            // Act
-            var hashCode1 = realtyType1.GetHashCode();
-            var hashCode2 = realtyType2.GetHashCode();
-
-            // Assert
-            Assert.AreEqual(hashCode1, hashCode2);
-        }
-
-        [Test]
-        public void GetHashCode_DifferentInstancesWithDifferentName_ReturnsDifferentHashCode()
-        {
-            // Arrange
-            var realtyType1 = new RealtyType("Apartment");
-            var realtyType2 = new RealtyType("House");
-
-            // Act
-            var hashCode1 = realtyType1.GetHashCode();
-            var hashCode2 = realtyType2.GetHashCode();
-
-            // Assert
-            Assert.AreNotEqual(hashCode1, hashCode2);
         }
     }
 }

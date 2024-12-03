@@ -20,7 +20,7 @@ namespace Domain
         /// <param name="price">Цена.</param>
         public Realty(RealtyType realtyType, double square, string address, decimal price)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.Empty;
 
             if (realtyType is null)
             {

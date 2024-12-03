@@ -16,7 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_stylecop", "_stylecop", "{
 		_stylecop\tests.ruleset = _stylecop\tests.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staff", "Staff\Staff.csproj", "{4284C734-3955-4A67-B632-4F436E0E0864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staff", "Staff\Staff.csproj", "{4284C734-3955-4A67-B632-4F436E0E0864}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{12E70C18-1A91-49C2-8AB4-57C178989957}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.Tests", "DataAccessLayer.Tests\DataAccessLayer.Tests.csproj", "{CC951176-899B-46B4-8CF4-2294A98571A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +44,14 @@ Global
 		{4284C734-3955-4A67-B632-4F436E0E0864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4284C734-3955-4A67-B632-4F436E0E0864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4284C734-3955-4A67-B632-4F436E0E0864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E70C18-1A91-49C2-8AB4-57C178989957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E70C18-1A91-49C2-8AB4-57C178989957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E70C18-1A91-49C2-8AB4-57C178989957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E70C18-1A91-49C2-8AB4-57C178989957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC951176-899B-46B4-8CF4-2294A98571A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC951176-899B-46B4-8CF4-2294A98571A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC951176-899B-46B4-8CF4-2294A98571A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC951176-899B-46B4-8CF4-2294A98571A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
