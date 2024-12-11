@@ -1,11 +1,16 @@
-namespace DataAccessLayer.Tests
+п»ї// <copyright file="RealtyConfigurationTests.cs" company="Realty">
+// Copyright (c) Realty. All rights reserved.
+// </copyright>
+namespace DataAccessLayer.Testss
 {
     using DataAccessLayer.Configurations;
     using Domain;
     using NUnit.Framework;
+    using System.Linq;
+    using Microsoft.EntityFrameworkCore;
 
     /// <summary>
-    /// Тесты для <see cref="RealtyConfiguration"/>.
+    /// РўРµСЃС‚С‹ РґР»СЏ <see cref="RealtyConfiguration"/>.
     /// </summary>
     [TestFixture]
     internal sealed class RealtyConfigurationTests : BaseConfigurationTests
@@ -23,7 +28,7 @@ namespace DataAccessLayer.Tests
             var realtyType = new RealtyType("House");
             var realty = new Realty(realtyType, 100.0, "123 Main St", 500000.0m);
 
-            // Добавляем RealtyType в контекст данных
+            // Р”РѕР±Р°РІР»СЏРµРј RealtyType РІ РєРѕРЅС‚РµРєСЃС‚ РґР°РЅРЅС‹С…
             this.DataContext.RealtyTypes.Add(realtyType);
             this.DataContext.SaveChanges();
 

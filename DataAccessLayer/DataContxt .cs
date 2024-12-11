@@ -10,10 +10,20 @@ namespace DataAccessLayer
 
     public sealed class DataContext : DbContext
     {
+        private static readonly string ConnectionString = "User ID=postgres; Password=1234; Host=localhost; Port=5432; Database=RealtyCompany1;";
+
+        private static readonly DbContextOptions<DataContext> Options = new DbContextOptionsBuilder<DataContext>()
+            .UseNpgsql(ConnectionString)
+            .EnableDetailedErrors()
+            .EnableSensitiveDataLogging()
+            .LogTo(System.Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Error)
+            .Options;
+
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="DataContext"/>.
         /// </summary>
         public DataContext()
+            : this(Options)
         {
         }
 
@@ -28,38 +38,28 @@ namespace DataAccessLayer
 
         /// <summary>
         /// </summary>
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; init; }
 
         /// <summary>
         /// </summary>
-        public DbSet<Realtor> Realtors { get; set; }
+        public DbSet<Realtor> Realtors { get; init; }
 
         /// <summary>
         /// </summary>
-        public DbSet<Realty> Realties { get; set; }
+        public DbSet<Realty> Realties { get; init; }
 
         /// <summary>
         /// </summary>
-        public DbSet<RealtyType> RealtyTypes { get; set; }
+        public DbSet<RealtyType> RealtyTypes { get; init; }
 
         /// <summary>
         /// </summary>
-        public DbSet<Application> Applications { get; set; }
-
-
+        public DbSet<Application> Applications { get; init; }
 
         /// <inheritdoc/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            _ = modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
-
-
-        /// <inheritdoc/>
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql("User ID=postgres; Password=1234; Host=localhost; Port=5432; Database=RealtyCompany1;");
-        }
-
     }
 }

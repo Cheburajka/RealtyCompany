@@ -10,8 +10,8 @@ namespace Domain
     /// <summary>
     /// Абстрактный класс, представляющий человека.
     /// </summary>
-    public abstract class Person<TPerson> : IEquatable<TPerson>
-        where TPerson : Person<TPerson>
+    public abstract class Person<TPerson> : Entity<TPerson>
+       where TPerson : Person<TPerson>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Person{TPerson}"/> class.

@@ -9,7 +9,7 @@ namespace Domain
     /// <summary>
     /// Класс, представляющий недвижимость.
     /// </summary>
-    public sealed class Realty : IEquatable<Realty>
+    public sealed class Realty : Entity<Realty>, IEquatable<Realty>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Realty"/> class.

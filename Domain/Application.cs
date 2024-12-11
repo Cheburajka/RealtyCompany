@@ -8,7 +8,7 @@ namespace Domain
     /// <summary>
     /// Класс, представляющий заявку на сделку с недвижимостью.
     /// </summary>
-    public sealed class Application : IEquatable<Application>
+    public sealed class Application : Entity<Application>, IEquatable<Application>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Application"/> class.
