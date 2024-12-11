@@ -9,7 +9,7 @@ namespace Domain
     /// <summary>
     /// Класс, представляющий недвижимость.
     /// </summary>
-    public sealed class Realty : IEquatable<Realty>
+    public sealed class Realty : Entity<Realty>, IEquatable<Realty>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Realty"/> class.
@@ -20,7 +20,7 @@ namespace Domain
         /// <param name="price">Цена.</param>
         public Realty(RealtyType realtyType, double square, string address, decimal price)
         {
-            this.Id = Guid.NewGuid();
+            this.Id = Guid.Empty;
 
             if (realtyType is null)
             {
